@@ -15,5 +15,3 @@
     "hbs": "^4.0.1"
   }
 }
-
-//heroku runs the start script which runs server.js as heroku doesnt know about server.js

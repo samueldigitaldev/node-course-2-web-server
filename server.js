@@ -1,8 +1,9 @@
-const express = require('express');
+// const express = require('express');
 const hbs = require ('hbs');
 const fs = require('fs');
 
 const port = process.env.PORT || 3000;
+//uses either environment port or local
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -14,9 +15,9 @@ app.use((req, res, next) => {
 	var log = `${now}: ${req.method} ${req.url}`;
 	console.log(log);
 	fs.appendFile('server.log', log + '\n', (err) => {
-		if (err){
+		/*if (err){
 			console.log('Unable to append to server.log.');
-		}
+		}*/
 	});
 
 	next();
@@ -78,7 +79,7 @@ app.listen(port, () => {
 	console.log(`Server is up on port ${port}`);
 });
 //binds app to port on machine
-
+//uses port that binds to environment of machine
 
 //git notes
 //git init to make the hidden git file but can be found with ls -a
@@ -96,11 +97,21 @@ app.listen(port, () => {
 //ssh -T git@github.com
 
 
+//package.json - heroku runs the start script which runs server.js as heroku doesnt know about server.js
+
 //heroku
 //heroku --help
 //heroku login
 //heroku keys:add this scans the ssh directories for keys
 //heroku keys - to check 
 //ssh -v git@heroku.com
+
+//git add .
+//git commit -m 'Setup start script and heroku port'
+//git push
+
+//heroku create
+//git push heroku
+
 
 
