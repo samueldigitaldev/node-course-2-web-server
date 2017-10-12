@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require ('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -73,8 +74,33 @@ app.get('/bad', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-	console.log("Server is up on port 3000");
+app.listen(port, () => {
+	console.log(`Server is up on port ${port}`);
 });
 //binds app to port on machine
+
+
+//git notes
+//git init to make the hidden git file but can be found with ls -a
+//git status to see added and committed
+//git add server.js
+//git commit -m 'Initial Commit'
+//ls al ~/.ssh ls prints all files in a given directory and this checks whether or not you have an ssh key
+//ssh-keygen -t rsa -b 4096 -C 'samuelwlai@gmail.com'
+//ls al ~/.ssh
+
+
+//eval "$(ssh-agent -s)"
+//ssh-add ~/.ssh/id_rsa
+//pbcopy < ~/.ssh/id_rsa.pub
+//ssh -T git@github.com
+
+
+//heroku
+//heroku --help
+//heroku login
+//heroku keys:add this scans the ssh directories for keys
+//heroku keys - to check 
+//ssh -v git@heroku.com
+
 
